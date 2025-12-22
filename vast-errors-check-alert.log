@@ -1,0 +1,1347 @@
+2025-12-20 05:00:46,351 | ERROR | root | Uncaught exception: Env variable IMPS_THRESHOLD not found
+2025-12-20 05:00:46,353 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable IMPS_THRESHOLD not found
+
+2025-12-20 05:00:46,353 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable IMPS_THRESHOLD not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:00:46,863 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 312, in <module>
+    wr.s3.upload(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\awswrangler\s3\_upload.py", line 73, in upload
+    with open(file=local_file, mode="rb") as local_f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'Creativesize Miss-check-alert.log'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:01:23,043 | ERROR | root | Uncaught exception: Env variable SLACK_WEBHOOK not found
+2025-12-20 05:01:23,043 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 27, in main
+    slack_webhook = get_env("SLACK_WEBHOOK")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable SLACK_WEBHOOK not found
+
+2025-12-20 05:01:23,043 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 27, in main
+    slack_webhook = get_env("SLACK_WEBHOOK")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable SLACK_WEBHOOK not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:01:23,349 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 312, in <module>
+    wr.s3.upload(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\awswrangler\s3\_upload.py", line 73, in upload
+    with open(file=local_file, mode="rb") as local_f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'Creativesize Miss-check-alert.log'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:02:39,723 | ERROR | root | Uncaught exception: Env variable AWS_GEO_CHECK_BUCKET not found
+2025-12-20 05:02:39,731 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 29, in main
+    aws_check_bucket = get_env("AWS_GEO_CHECK_BUCKET")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable AWS_GEO_CHECK_BUCKET not found
+
+2025-12-20 05:02:39,733 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 297, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 29, in main
+    aws_check_bucket = get_env("AWS_GEO_CHECK_BUCKET")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable AWS_GEO_CHECK_BUCKET not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:02:40,011 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 312, in <module>
+    wr.s3.upload(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\awswrangler\s3\_upload.py", line 73, in upload
+    with open(file=local_file, mode="rb") as local_f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'Creativesize Miss-check-alert.log'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:22:24,095 | ERROR | root | Uncaught exception: Env variable AWS_GEO_CHECK_BUCKET not found
+2025-12-20 05:22:24,095 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 308, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 29, in main
+    aws_check_bucket = get_env("AWS_GEO_CHECK_BUCKET")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable AWS_GEO_CHECK_BUCKET not found
+
+2025-12-20 05:22:24,095 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 308, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 29, in main
+    aws_check_bucket = get_env("AWS_GEO_CHECK_BUCKET")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\work\vevomaintest\utils.py", line 25, in get_env
+    raise ValueError(f"Env variable {key} not found")
+ValueError: Env variable AWS_GEO_CHECK_BUCKET not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:22:24,294 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 324, in <module>
+    wr.s3.upload(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\awswrangler\s3\_upload.py", line 73, in upload
+    with open(file=local_file, mode="rb") as local_f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'Creativesize Miss-check-alert.log'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:30:49,984 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpg1qwlyuk/creds.json
+                    
+2025-12-20 05:30:51,577 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:30:51,953 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:30:51,953 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:30:51,956 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:30:52,475 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:30:53,004 | INFO | __main__ | Report job submitted: job_id=16600471451
+2025-12-20 05:30:53,006 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:30:53,006 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:30:53,373 | INFO | gamservices | 16600471451 Report job status: IN_PROGRESS
+2025-12-20 05:31:23,374 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:31:24,091 | INFO | gamservices | 16600471451 Report job status: COMPLETED
+2025-12-20 05:31:24,091 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:31:24,964 | INFO | gamservices | 16600471451 Report is ready.
+2025-12-20 05:31:24,964 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600471451-90749c35-0a78-44e5-ba76-73f643291939?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766226985&Signature=CpEXOAmfRJrq7FmudBE3BmDlBXwKEfqnJ3Mzx4gsnhCV4gWsjeyEHOYLWHZNi/aW3fyoA35fhcpSVI/UMWfsRkQjNp51zWMEjTKaQWcHZL1kuhySyAu9dCBDAOGNIxAEAOdwEscF4%2BDmsiuaEspSuGAOCWRAR3ST33fY3c6d4tViME90OmLGG4bygn3nLtexRQOT1q6PrTwsThNyxIVPUqUPd4M7WFI1nb/PY4v1OdL4ZLMrGu%2BTfKZgyYk1OGUemKq9sD%2B4V%2B62gpc%2BLdw4m4YiuA1yE62gdudbMBWeaAWwY8E5Ms2iRRWNcrQ8b20mPIpNSLPajjYl4WGxUhiMjw%3D%3D
+2025-12-20 05:31:26,301 | ERROR | root | Uncaught exception: cannot access local variable 'new_alerts_df' where it is not associated with a value
+2025-12-20 05:31:26,301 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 317, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 222, in main
+    li_group_df = new_alerts_df.groupby(["order_trafficker"])
+                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'new_alerts_df' where it is not associated with a value
+
+2025-12-20 05:31:26,301 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 317, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 222, in main
+    li_group_df = new_alerts_df.groupby(["order_trafficker"])
+                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'new_alerts_df' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:37:27,435 | ERROR | root | Uncaught exception: invalid literal for int() with base 10: '80.00'
+2025-12-20 05:37:27,436 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '80.00'
+
+2025-12-20 05:37:27,436 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '80.00'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:37:44,056 | ERROR | root | Uncaught exception: invalid literal for int() with base 10: '80.00'
+2025-12-20 05:37:44,057 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '80.00'
+
+2025-12-20 05:37:44,058 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 25, in main
+    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '80.00'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:40:03,336 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:40:03,377 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp5xmgbq7h/creds.json
+                    
+2025-12-20 05:40:03,793 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:40:04,319 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:40:04,319 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:40:04,319 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:40:04,970 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:40:05,506 | INFO | __main__ | Report job submitted: job_id=16600499712
+2025-12-20 05:40:05,506 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:40:05,518 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:40:06,035 | INFO | gamservices | 16600499712 Report job status: IN_PROGRESS
+2025-12-20 05:40:36,043 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:40:36,382 | INFO | gamservices | 16600499712 Report job status: COMPLETED
+2025-12-20 05:40:36,382 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:40:37,888 | INFO | gamservices | 16600499712 Report is ready.
+2025-12-20 05:40:37,897 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600499712-683aaa72-cb5e-40ab-8980-31272a52c717?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766227538&Signature=Wq7UF8iqtQvG/%2BYR6dRbJokDLQpCYdLCyh7ilKjFi2Y/DDQsx1V6Bx7oXA2GqmjiwM4VuKcrYTeY6l%2BI4xtk5DvVNVL1lbqv3LZfR0o0g5EcQ6sovbjKdLFuSDCTEBTQUzaEeQQbH3VsranOMegF696LJlIqKPuUlNfcKE4%2BJ3CEN5d11S6p5GflEWj1z4Oa5v94c9O1xJ%2BOKM%2BDAFfkkj3vCv380GeQZp%2Bof5MM0jy2wF39jc/VI7A%2BNArJc4t7FwcQSFfhEGqiASXT73up21U6Y9hxcA5TPcDGGLlwdmX2IJtCBe3XhxsDCBnjRLNTkxKukYF72PSL1%2BlsKNhgkg%3D%3D
+2025-12-20 05:40:39,516 | ERROR | root | Uncaught exception: 'order_trafficker'
+2025-12-20 05:40:39,551 | ERROR | root | Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 226, in main
+    li_group_df = new_alerts_df.groupby(["order_trafficker"])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\frame.py", line 9210, in groupby
+    return DataFrameGroupBy(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\groupby\groupby.py", line 1331, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\groupby\grouper.py", line 1043, in get_grouper
+    raise KeyError(gpr)
+KeyError: 'order_trafficker'
+
+2025-12-20 05:40:39,551 | ERROR | slack_notification | Failed to send alert to Slack: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 327, in <module>
+    main()
+  File "c:\work\vevomaintest\main.py", line 226, in main
+    li_group_df = new_alerts_df.groupby(["order_trafficker"])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\frame.py", line 9210, in groupby
+    return DataFrameGroupBy(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\groupby\groupby.py", line 1331, in __init__
+    grouper, exclusions, obj = get_grouper(
+                               ^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\pandas\core\groupby\grouper.py", line 1043, in get_grouper
+    raise KeyError(gpr)
+KeyError: 'order_trafficker'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2025-12-20 05:49:04,389 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:49:04,431 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp_0d4cj4j/creds.json
+                    
+2025-12-20 05:49:08,031 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:49:08,065 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpyjl8q15_/creds.json
+                    
+2025-12-20 05:49:08,406 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:49:09,273 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:49:09,273 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:49:09,275 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:49:09,994 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:49:10,528 | INFO | __main__ | Report job submitted: job_id=16600524617
+2025-12-20 05:49:10,528 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:49:10,528 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:49:10,873 | INFO | gamservices | 16600524617 Report job status: IN_PROGRESS
+2025-12-20 05:49:40,875 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:49:41,206 | INFO | gamservices | 16600524617 Report job status: COMPLETED
+2025-12-20 05:49:41,208 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:49:42,511 | INFO | gamservices | 16600524617 Report is ready.
+2025-12-20 05:49:42,512 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600524617-4b1f8f16-c0e1-4f16-bc6b-d9434cc7da78?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766228083&Signature=BAwK4RO5J3fTTfbslKaBdj%2BI0lbIZfJAyEe2XuE5%2B7meXwQmyAGtd1A7LHLBlFsd1e%2BThZuS09a0NAjjxcZvBh09IDYqTeFttYOGuHtiE6PBlhmmJSS9oJimFIxL9/HZjYrK%2Bann0T%2BN2k7z6Z78TEuhX6Pkz6fo29tq%2BHVOGEuPIwXDAZn2vFCd5MyAhOw93va5x/jSOxzM3MBQBjEqNfR%2B5vcCgWP2YstDe89qYp%2BLOGjjY76KWf%2B7Fq6CwHjJy/hpiiRGQ8lt3r3wq3GEgFAhiqckQMLpBzq6J1a9ni/2mYxSnHyAOhGqMeL94KwRqkjNbe%2Br7W60BVXryO7J%2BA%3D%3D
+2025-12-20 05:50:45,471 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:50:45,503 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpsqz8wt1i/creds.json
+                    
+2025-12-20 05:50:45,869 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:50:46,409 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:50:46,410 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:50:46,413 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:50:47,086 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:50:47,641 | INFO | __main__ | Report job submitted: job_id=16600528096
+2025-12-20 05:50:47,641 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:50:47,641 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:50:48,007 | INFO | gamservices | 16600528096 Report job status: IN_PROGRESS
+2025-12-20 05:51:18,008 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:51:18,375 | INFO | gamservices | 16600528096 Report job status: COMPLETED
+2025-12-20 05:51:18,375 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:51:19,197 | INFO | gamservices | 16600528096 Report is ready.
+2025-12-20 05:51:19,197 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600528096-7776ac4f-faf5-4d7b-900b-c303650f230b?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766228179&Signature=HuYk5gQycENyItrFvVFHmxSyVlagSrUK8VYN2gzZm0uTarZ25YgwwJiQP03eQ6qw7WjGLDSgrWEkJfvmeQeCm2J0436O42bu74/ftLmENSGVZDqi4I8cywGLElCv3pLukRjHReDxp1b1b7ZRi%2BcaONbM7lkwgAcAUhSSuSLpLbaqR9zPvXFTCM1ssKogaGwwxOrQAvbeimjNeIA8YQxahk9ZV4ULAVBsfbeJkKnL%2B7Ct8/Bs9SpBVNQyVZj%2BoX3IHi1oPkHJAH2WTRe8NJSGycjjq7ANGhUu4DbRifQwIazGHD9HaSLX1lEaoJY50Cgk8K%2B7dNW%2B%2BXR/dXi/TNbJJg%3D%3D
+2025-12-20 05:54:06,169 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:54:06,203 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpqs6mxbsa/creds.json
+                    
+2025-12-20 05:54:06,601 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:54:07,164 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:54:07,180 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:54:07,180 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:54:07,900 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:54:08,447 | INFO | __main__ | Report job submitted: job_id=16600536030
+2025-12-20 05:54:08,447 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:54:08,447 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:54:08,818 | INFO | gamservices | 16600536030 Report job status: IN_PROGRESS
+2025-12-20 05:54:38,821 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:54:39,150 | INFO | gamservices | 16600536030 Report job status: COMPLETED
+2025-12-20 05:54:39,150 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:54:40,311 | INFO | gamservices | 16600536030 Report is ready.
+2025-12-20 05:54:40,312 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600536030-5df6d67e-1246-4ea2-95d7-3ab188cbf6fd?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766228380&Signature=XiLLKmULLpZeM3us8k0ZV6QFzYgxnLmZcGGtx%2BNTMLc6o6d/XBrCXPJWCBuEHMRzOh17pJ6rYXtmKKj8dYXZFLRTVWFpx%2BtEbtheredQ76Dv5MV/BvLyHYBuZG7f4y%2B2U9R%2BeN491agY4EEfPttn/K90u6XNyKkUh2sGPnIamjYz%2B7oOgjm12YKqlIuVvNeauxTUXolDuAPQzeUPRduA5vLJKh/W8JDkYJ2K1wlJHmXpoAs70PD/XNtOsAlBpS3BLK8zQtLylNDzruNIAui2QhttuDIWJW0szzqYkw%2BuFVZmy6trmc%2B8JMY/OOUht5KpWDLkkuliyAF8Osv4cQzYnA%3D%3D
+2025-12-20 05:57:42,008 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 05:57:42,040 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpr6d_4rr9/creds.json
+                    
+2025-12-20 05:57:42,427 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 05:57:42,991 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 05:57:42,991 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 05:57:43,005 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:57:43,660 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:57:44,528 | INFO | __main__ | Report job submitted: job_id=16600544654
+2025-12-20 05:57:44,528 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 05:57:44,528 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:57:44,895 | INFO | gamservices | 16600544654 Report job status: IN_PROGRESS
+2025-12-20 05:58:14,897 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:58:15,248 | INFO | gamservices | 16600544654 Report job status: COMPLETED
+2025-12-20 05:58:15,250 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 05:58:16,140 | INFO | gamservices | 16600544654 Report is ready.
+2025-12-20 05:58:16,141 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600544654-314f4c6b-7782-4842-97c8-d874eb74de92?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766228596&Signature=GounsRGOmDNGAaO7vJUI1BK1hpBd605g2FZ9KF4tLmauickxWrIevbUqw4yaNvWOIIqk/eZn3O13T9qugvrUFrCsHk54VlcrsEBFzmP4TTnoMg%2BCUAMnblbn3pQY0IFlHad2vL/R6o67NiA575wAUe6jhtNxg2UAToDBpO6Wmby2PXAi7re6DsFANupYYBrs2QvLxxMyIx8RGR9ttsKLgRVQdCh6VF/%2BxJG8fxuexwQx/KkrhsHUjNmG0sndX/ix370HH2HUVzzjZupDmWzivqHdoKtM5/4okbT/wTrnGlAnyv/m6MFHLxFDWIxhqbj/yzdMCLsUd2wHBYwvK3uAvg%3D%3D
+2025-12-20 05:58:17,190 | WARNING | __main__ | 'order_trafficker' column not found in DataFrame
+2025-12-20 06:00:21,092 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:00:21,142 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpyaxtwm25/creds.json
+                    
+2025-12-20 06:00:21,555 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:00:22,126 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:00:22,126 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:00:22,126 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:00:22,839 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:00:23,389 | INFO | __main__ | Report job submitted: job_id=16600552118
+2025-12-20 06:00:23,389 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:00:23,389 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:00:23,739 | INFO | gamservices | 16600552118 Report job status: IN_PROGRESS
+2025-12-20 06:00:53,755 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:00:54,116 | INFO | gamservices | 16600552118 Report job status: COMPLETED
+2025-12-20 06:00:54,116 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:00:55,039 | INFO | gamservices | 16600552118 Report is ready.
+2025-12-20 06:00:55,039 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600552118-dc094d13-abd5-4f6c-9688-9fa7a108b878?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766228755&Signature=FuRsC0wfcrAlpvzylO%2BkZWviu4ky755EAXiNEI6UzwqmoSiuZlyVFfDF06Hf2rmwSKGL%2BAeKhyjIzfFkoZgVv8MwcOgXfOFIbZ%2B7uJm7%2Bzv9BXE2/ZEbgL7PqU4gg/IrFiaE15zINqLZr%2Bfpg0sBHjU5WUqntNnxKOIV3xwDWtnPi/NC4CN/Hb2Tjgzy2zUTwEPAB1nrUgduXqb27hrOpJEdr/QzexR1xNIXrUzllYVLIsBh/RAmLGG8pe86iBQFhfDNuX0uUWQzPbbP/NvfHoGBGCjR5sN4ctii09vbY5i1LRnitLAeTN1gAKV8oue6TlHhGjNMte4Ym2pcImrrPA%3D%3D
+2025-12-20 06:10:26,805 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:10:26,843 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpp5d_qzcn/creds.json
+                    
+2025-12-20 06:10:27,250 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:10:27,777 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:10:27,777 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:10:27,779 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:10:28,464 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:10:29,022 | INFO | __main__ | Report job submitted: job_id=16600604502
+2025-12-20 06:10:29,022 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:10:29,022 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:10:29,406 | INFO | gamservices | 16600604502 Report job status: IN_PROGRESS
+2025-12-20 06:10:59,410 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:10:59,793 | INFO | gamservices | 16600604502 Report job status: COMPLETED
+2025-12-20 06:10:59,796 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:11:00,875 | INFO | gamservices | 16600604502 Report is ready.
+2025-12-20 06:11:00,875 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600604502-19ccb83f-4e41-4f9b-803f-ba9779e38e95?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766229361&Signature=FH%2BTbTWwkgPVSd9Z4raA90HZ1Sb3kuCW8rAXStyApsjsLGMB003qLZ8V1LXpHo9mkU59ruiz4YRbxuA05SYRPNo6uhBGeAnUSrbJMqJyYwehrTlPn9gB9v8twM2bBnUfyGrcYlJtxxzdXWyU/tIurG7vAXFOtvIpcd8ajw4IH6Hx%2B9oqyohIU6Csz9jb5pa0DtglxnZxP/oFfhTIHfeB5U9yauDtXSnzF/nUS28iqkwWJWscEBChZrDCS0zH3quJ8etDDRQcnrcKLNEiJbzzmpV4h%2BVcxBQCCMQaCb7oACd5/dSafGe0B%2BjWoSPvIkMCOFesNHhs2ofQSBnAUuBjXw%3D%3D
+2025-12-20 06:14:15,168 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:14:15,198 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpngu9707w/creds.json
+                    
+2025-12-20 06:14:15,589 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:14:16,186 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:14:16,186 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:14:16,202 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:14:16,921 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:14:17,469 | INFO | __main__ | Report job submitted: job_id=16600618311
+2025-12-20 06:14:17,469 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:14:17,469 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:14:17,816 | INFO | gamservices | 16600618311 Report job status: IN_PROGRESS
+2025-12-20 06:14:47,818 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:14:48,149 | INFO | gamservices | 16600618311 Report job status: COMPLETED
+2025-12-20 06:14:48,150 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:14:49,053 | INFO | gamservices | 16600618311 Report is ready.
+2025-12-20 06:14:49,053 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600618311-8bedf36b-2d1b-48be-abb8-374f45440180?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766229589&Signature=N9BvRRHZ4/2yyvm0VIQ4XLu32L0wxSJmxh1rWKc6vJE84%2BUvcf0qIUZw3uw2rqOlVZAL3aR9rlPKivSsPgt80EyzGd5Npus7y2Vf17M9No8AdAA%2BeGNUJfO8kQ0FepdqKMkcZT1n1i4aon%2BYf8CYsqK0nPxv9hdCrUadi0qOEE7XTLrKiRjfgfRfwOOzOy5UwC1/CcGcyeMR8YLJhLBA0pTMak1BlBtD/hqnOUv/RtIoxaC5PdtCUyOx12X1uD9fA7ribY%2BNOeJWuIxvmE1rOx44lZUcKRlEvziVpzRZizDQTZBRREqlxsWqbDt3PkPWGDP2nieyLn/6exjV1VKe/w%3D%3D
+2025-12-20 06:19:25,420 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:19:25,450 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpl5l2i83h/creds.json
+                    
+2025-12-20 06:19:25,876 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:19:33,589 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:19:33,621 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpledhva0e/creds.json
+                    
+2025-12-20 06:19:33,992 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:19:34,507 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:19:34,507 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:19:34,507 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:19:35,215 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:19:35,727 | INFO | __main__ | Report job submitted: job_id=16600635675
+2025-12-20 06:19:35,727 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:19:35,742 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:19:36,076 | INFO | gamservices | 16600635675 Report job status: IN_PROGRESS
+2025-12-20 06:20:06,083 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:20:06,443 | INFO | gamservices | 16600635675 Report job status: COMPLETED
+2025-12-20 06:20:06,443 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:20:07,293 | INFO | gamservices | 16600635675 Report is ready.
+2025-12-20 06:20:07,293 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600635675-9dc4f6ed-078a-4f3d-aec4-f851aea158d5?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766229908&Signature=zCH7rgC/jXy7VQO3IAfp2qMQoO4KElPlAAp/1DrSKXVRlEM4lmyttezBfli2suNu1xzF2yr3aCY8/foIHIOUWzffJ%2B5cxSPdWdJUU2p1NzxdgrRP9u3DrKJKlMFpy6ixW8RMUVnCQda5pPaRwWeIoCBmw3oIEVRdJTu86ZbnR1o3Mjdzq2xr7%2BBa8N4Tk2Fq%2BWnDqrGQR8MB/7NCjmTiud5NsWK87GQh7mGnnuKovd5poG7Se3wOmi3BPh8oXRTf%2BvElsN5xIRojhChCFkKwETjA8Li8OYS9pPE0/hWN%2Ba1XEMFgIYuKaw6JcZbry3L6Pmv0KFasFT7aZq6a2mCeUg%3D%3D
+2025-12-20 06:30:58,737 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:30:58,784 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpjcg3emy9/creds.json
+                    
+2025-12-20 06:31:00,056 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:31:00,769 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:31:00,769 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:31:00,769 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:31:01,347 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:31:01,944 | INFO | __main__ | Report job submitted: job_id=16600669770
+2025-12-20 06:31:01,944 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:31:01,958 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:31:02,369 | INFO | gamservices | 16600669770 Report job status: IN_PROGRESS
+2025-12-20 06:31:32,371 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:31:32,786 | INFO | gamservices | 16600669770 Report job status: COMPLETED
+2025-12-20 06:31:32,786 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:31:33,692 | INFO | gamservices | 16600669770 Report is ready.
+2025-12-20 06:31:33,693 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600669770-7418f374-2fb5-4785-b160-5f99b8cf9a35?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766230594&Signature=lMVISvd/6vUdOTIqTzB2q01kNjgEL574fF81tEwwf%2B0Vd7KnHV5uyU7DruePTkxCsrgke1o2T4RQfkzQtMSSl1s24fncptPi/QzEQEMfzS%2BTUsL%2BTevjEDZAFL/B6M9PHHMwKcGsgKxD1pjpW/R7MPlr7hDhAy9mD%2Buvm0EPEJUpCzx4DGXEi/wREh2FfxGe30oIIeCWHAjWoGnEsDAtfzuQpEzHFQ7aszEN47dJv6SGjKq/xLA7xdNTOibEnl8g1JDSX0TQ5GXsOQAmTIaJNxqdWs0kDBxctO4btwWJ3PGL927xdTXKLcUHHQ4oRfLtMJaKokdbL2SNgHHKV48OKg%3D%3D
+2025-12-20 06:31:34,909 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 06:31:35,455 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 06:31:35,455 | ERROR | __main__ | Failed to send Slack notification for report_id=16521056117
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\main.py", line 318, in main
+    len(elements) / 3,
+        ^^^^^^^^
+UnboundLocalError: cannot access local variable 'elements' where it is not associated with a value
+2025-12-20 06:35:31,673 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:35:31,706 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpmgud0o44/creds.json
+                    
+2025-12-20 06:35:32,087 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:35:32,971 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:35:32,971 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:35:32,971 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:35:33,721 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:35:34,621 | INFO | __main__ | Report job submitted: job_id=16600684014
+2025-12-20 06:35:34,621 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:35:34,621 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:35:35,071 | INFO | gamservices | 16600684014 Report job status: IN_PROGRESS
+2025-12-20 06:36:05,082 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:36:05,803 | INFO | gamservices | 16600684014 Report job status: COMPLETED
+2025-12-20 06:36:05,818 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:36:07,053 | INFO | gamservices | 16600684014 Report is ready.
+2025-12-20 06:36:07,053 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600684014-3051524b-f44d-4239-95bd-d92bc045f69b?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766230867&Signature=nV7zQIShBS1ipAUVwzkRFmmA9ETgG2Mxf/9f4z5HUvChJ9wkois1K2pIs%2BLqnNlXWfp3S3BypyLJyZv4m%2Bv6VJNGLQisz4HaP75TU5pb%2BdkXU9cTCsouQEDabIEQyVLt/DuBq24RspKhyeKO%2B3hDoZuyUo1wh5xeYYt3AY1ukWj9HyuXBCRBDfZPrQmIMnuem9mzk0YhO1swfxfAchJDyuNSNsOeWC2wHzQaMeqiRj%2BSjXlR5/q2hOplyCJr9m86MXTy7KPHEigJKCgE7vIuz8QaEhD3twp98JRhfrzamqrYbIH6XcGsuZTBsiQ1YEvrajxA9nkAGxsDzcVBze5duQ%3D%3D
+2025-12-20 06:36:08,320 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 06:36:09,657 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 06:36:09,669 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=True
+2025-12-20 06:45:09,710 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:45:09,744 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpmeffrt53/creds.json
+                    
+2025-12-20 06:45:10,122 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:45:11,773 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:45:11,773 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:45:11,773 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:45:12,592 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:45:13,256 | INFO | __main__ | Report job submitted: job_id=16600710421
+2025-12-20 06:45:13,256 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:45:13,256 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:45:13,671 | INFO | gamservices | 16600710421 Report job status: IN_PROGRESS
+2025-12-20 06:45:43,685 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:45:44,099 | INFO | gamservices | 16600710421 Report job status: COMPLETED
+2025-12-20 06:45:44,099 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:45:45,286 | INFO | gamservices | 16600710421 Report is ready.
+2025-12-20 06:45:45,286 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600710421-446596fc-8ded-4d7e-9be8-019d00495903?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766231445&Signature=qtS8y6DW3ycYgnK2GUmTAwQdaqFc/EEGlrTD1a9/PJ6%2BijBMND%2BOtK1Xsnsw5NKdgZjPbH7GabdXSglN2SsjJddy9pH%2BsjFad9E0cTvNW2dZyIMM5%2B1mS5/%2B%2BP6hqyOnu3qNGFDSZXOuqWMeMi5UtAficEg/zcasUHWm0LkOv0F%2BBvlGnZl9YMLAH9XLpHyep0mbywnzZCh6lkBAU6yKubtprjypAOTQy1AovLTZQKA7dwBmpv7x/o3exPQQb14rh%2BXvy4aBaDXnXq9R5rCOHENkGoxRtfbht8ZOVTosqRA%2BqHUJwOYz3PQbE4avhCJnt6yL8OpU%2B0764MxTtvBwyA%3D%3D
+2025-12-20 06:45:46,382 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 06:45:57,718 | ERROR | slack_notification | Failed to send alert to Slack: HTTPSConnectionPool(host='hooks.slack.com', port=443): Read timed out. (read timeout=10)
+Traceback (most recent call last):
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1075, in _create
+    self.do_handshake()
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1346, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: _ssl.c:975: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='hooks.slack.com', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\work\vevomaintest\slack_notification.py", line 18, in slack_notification
+    response = requests.post(webhook_url, json=json_data, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\work\vevomaintest\.venv\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='hooks.slack.com', port=443): Read timed out. (read timeout=10)
+2025-12-20 06:45:57,788 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=False
+2025-12-20 06:53:10,090 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:53:11,768 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp_jhccxkp/creds.json
+                    
+2025-12-20 06:53:12,222 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:53:12,837 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:53:12,837 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:53:12,837 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:53:13,517 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:53:14,111 | INFO | __main__ | Report job submitted: job_id=16600731005
+2025-12-20 06:53:14,111 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:53:14,111 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:53:14,471 | INFO | gamservices | 16600731005 Report job status: IN_PROGRESS
+2025-12-20 06:54:38,609 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:54:38,641 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpi4tl3z30/creds.json
+                    
+2025-12-20 06:54:39,037 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:54:39,586 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:54:39,586 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:54:39,586 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:54:40,372 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:54:40,936 | INFO | __main__ | Report job submitted: job_id=16600733543
+2025-12-20 06:54:40,936 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:54:40,936 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:54:41,291 | INFO | gamservices | 16600733543 Report job status: IN_PROGRESS
+2025-12-20 06:55:11,294 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:55:11,667 | INFO | gamservices | 16600733543 Report job status: COMPLETED
+2025-12-20 06:55:11,668 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:55:12,802 | INFO | gamservices | 16600733543 Report is ready.
+2025-12-20 06:55:12,802 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600733543-f693446a-c037-4a08-bf60-6b110c6facf1?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766232013&Signature=aa5m1c/rSuWX20YC1j9MfdE6ht/Ye1Pao7oBFeBkJRT4RN%2BpJiKRudk59mC80wY03lmIhQfypdpzVqRaUNU9OaaNcsnLXPPfwFCFePCXsbjkbzDaCW4UI763VLXTanE4yWxm58rrTazerZllWo7JiBWmLaxfUtrUGkh142kdG7lhRDFEz83bIPgKe3jRXFRVsJxzye/cJPkvb0ogt0b6ozC3NurLW/aqPk7rxbRCIU28tbi3BBzZ15bwL8QMDBIgNxdBKw6mgE2tRoZWwpyuVN7WYKMVTXVIzw3K1UQ009ZRVP8vs7lIRRD011r8PZEY2NQliUvY1SEoGnYfRT7HxA%3D%3D
+2025-12-20 06:55:13,941 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 06:55:14,402 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 06:55:14,420 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=True
+2025-12-20 06:58:13,834 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 06:58:13,872 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpi_fbtmo8/creds.json
+                    
+2025-12-20 06:58:14,269 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 06:58:14,854 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 06:58:14,854 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 06:58:14,854 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:58:15,607 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:58:16,454 | INFO | __main__ | Report job submitted: job_id=16600743379
+2025-12-20 06:58:16,454 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 06:58:16,454 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:58:16,818 | INFO | gamservices | 16600743379 Report job status: IN_PROGRESS
+2025-12-20 06:58:46,820 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:58:47,187 | INFO | gamservices | 16600743379 Report job status: COMPLETED
+2025-12-20 06:58:47,189 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 06:58:48,120 | INFO | gamservices | 16600743379 Report is ready.
+2025-12-20 06:58:48,120 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600743379-cd4a159c-4aff-4f9e-a611-a39cdd8144c8?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766232228&Signature=LUApaSGBZ6xu7sIFcrmIE13VbxveSTkXIFb6Ip01USprI1h5X1H6OvYQM3VmZCriv9SAlokxP18DbitQZnSbkXMluJ9WucnKfRRXOO1TA3rvS3/tz9G11I4qDRFLkn8zu5mDPXiKM9D%2BoMfhp9YchFXfaWgPduFxhX/JiD7sNImSB8HGWU3CRKIgDeKy88bg5%2BrTdC0EmJMubmFBttQmX0BT9CusvKXhmgqb5hJNf9dmiTwz42c7HxgCJ/cLmvb6jRLvYAXmH0zEfCWR4MxsxFCgrN4u1ivvg9MMYrvBv%2BPIK/8I06Jf5qdF3x/eCR/RVAzl27huNSXzyCjECyqP2g%3D%3D
+2025-12-20 06:58:49,085 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 06:59:01,580 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 06:59:01,580 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=True
+2025-12-20 07:05:22,892 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 07:05:22,929 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp45_l05wy/creds.json
+                    
+2025-12-20 07:05:23,318 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 07:05:23,910 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 07:05:23,910 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 07:05:23,910 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:05:24,577 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:05:25,193 | INFO | __main__ | Report job submitted: job_id=16600778656
+2025-12-20 07:05:25,193 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 07:05:25,193 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:05:25,565 | INFO | gamservices | 16600778656 Report job status: IN_PROGRESS
+2025-12-20 07:06:35,011 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 07:06:35,059 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp3jw_qvjf/creds.json
+                    
+2025-12-20 07:06:35,536 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 07:06:36,036 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 07:06:36,051 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 07:06:36,051 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:06:36,794 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:06:37,345 | INFO | __main__ | Report job submitted: job_id=16600785036
+2025-12-20 07:06:37,345 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 07:06:37,345 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:06:37,707 | INFO | gamservices | 16600785036 Report job status: IN_PROGRESS
+2025-12-20 07:07:07,709 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:07:08,064 | INFO | gamservices | 16600785036 Report job status: COMPLETED
+2025-12-20 07:07:08,066 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:07:08,897 | INFO | gamservices | 16600785036 Report is ready.
+2025-12-20 07:07:08,897 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600785036-ca193a4d-4d1f-4eb3-badb-24b7d16b3d81?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766232729&Signature=cUH3r21p0G3EtssGNhMGDOsSm%2B7CbJ8LP2y9nvD/XC%2BeyRKySLh7DdEGtGGHHcLdq0MUjzbXfIwLXpYyuZPu04dNp6AM6bwhd2ppLaLmkryj0%2BOSoHHbPvR8tMRSCGC/Cf9H8OT%2BBprQfkuxPAX6LZh2QYhrWaUj/E9QTmHG1ioAZJ6ShxSDtmnMQH3nB4AAxhkqUth2E80UhQXhMKUJZYEn/dLK/dy/8j5J67mfiSnfcYI1yUYFeLG75Rdc8Ro6VSInwGiSrDlbstzceDQi7db6NrXKFDB93wGsq55GS5/hict5uRJnLR7U8lLqRc1ICYr4ycNkMcPw089OlNQIrg%3D%3D
+2025-12-20 07:07:10,007 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 07:07:11,623 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 07:07:11,623 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=True
+2025-12-20 07:09:53,507 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 07:09:53,556 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpu1ot3s5i/creds.json
+                    
+2025-12-20 07:09:53,936 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 07:09:54,470 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 07:09:54,473 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 07:09:54,473 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:09:55,190 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:09:55,722 | INFO | __main__ | Report job submitted: job_id=16600798984
+2025-12-20 07:09:55,735 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 07:09:55,736 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:09:56,103 | INFO | gamservices | 16600798984 Report job status: IN_PROGRESS
+2025-12-20 07:10:26,106 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:10:26,452 | INFO | gamservices | 16600798984 Report job status: COMPLETED
+2025-12-20 07:10:26,452 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 07:10:27,303 | INFO | gamservices | 16600798984 Report is ready.
+2025-12-20 07:10:27,303 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16600798984-f239dc28-acbe-4ebe-b371-562389e1c019?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766232928&Signature=QXlLeu4stNxBas6CL6JRPG6THOw3mMscJ0s/3auQHqqfF9e6jFufr5DP7U2vwG/e42AXzfoGfi3qjwWlyKKu9fzzuIDQIJV4hrAS31zyPZTPyYi0pIDv8d5WclUt3piQKT9AsMrB/BCYg5NCRUR/w2gW58fN/xjptbfMJjdLa0DzSvULelrHkyp4L/Z%2BZeSNE9o2z6TdaYOMhErCR0fSnjKZ4c4zP0lEgIotgV3p5f0BrK9VtUIJIcDNes2Lwf0DAxR/EsODaIP59THjIFcofQGZZRpGh/Y/IGiaz4G273tpxYWw4E24tQURam/J3BqCbisXddvFPZc0ydgYJp3N7A%3D%3D
+2025-12-20 07:10:28,569 | INFO | __main__ | No violations found today. Sending NAA Slack message.
+2025-12-20 07:10:29,002 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 07:10:29,017 | INFO | __main__ | Slack NAA notification sent: report_id=16521056117, result=True
+2025-12-20 09:16:53,852 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:16:53,883 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmph8npp7o1/creds.json
+                    
+2025-12-20 09:16:55,010 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:16:55,411 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:16:55,411 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:16:55,414 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:16:56,021 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:16:56,868 | INFO | __main__ | Report job submitted: job_id=16601196329
+2025-12-20 09:16:56,868 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 09:16:56,868 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:16:57,251 | INFO | gamservices | 16601196329 Report job status: IN_PROGRESS
+2025-12-20 09:21:02,301 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:21:02,347 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpf618pyfz/creds.json
+                    
+2025-12-20 09:21:02,755 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:29:57,541 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:29:57,654 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpacd3d16v/creds.json
+                    
+2025-12-20 09:29:58,058 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:30:19,730 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:30:19,730 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:30:19,736 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:36:37,041 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:36:37,094 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpyfmu0d__/creds.json
+                    
+2025-12-20 09:36:37,574 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:36:38,139 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:36:38,139 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:36:38,144 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:36:59,914 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:37:00,370 | WARNING | googleads.soap | Error summary: {'faultMessage': '[NotNullError.NULL @ reportQuery.startDate]', 'requestId': '216df22606a41238209b5d377956362e', 'responseTime': '241', 'serviceName': 'ReportService', 'methodName': 'runReportJob'}
+2025-12-20 09:39:48,019 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:39:48,075 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmprl238f5c/creds.json
+                    
+2025-12-20 09:39:48,507 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:39:49,117 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:39:49,117 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:39:49,123 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:39:50,144 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:39:51,365 | INFO | __main__ | Report job submitted: job_id=16601257743
+2025-12-20 09:39:51,365 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 09:39:51,365 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:39:51,789 | INFO | gamservices | 16601257743 Report job status: IN_PROGRESS
+2025-12-20 09:40:21,804 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:40:22,494 | INFO | gamservices | 16601257743 Report job status: COMPLETED
+2025-12-20 09:40:22,494 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:40:23,528 | INFO | gamservices | 16601257743 Report is ready.
+2025-12-20 09:40:23,528 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601257743-6d1abc8d-26cc-439f-a412-982513c353ac?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766241924&Signature=evXWj3ajM1tYTq7dkJ23K7QjnLgzZ2348bxj2ij0L1b6fqPt89yKGpXKlUFrp8jjJ3/JPAMgimkegEAbQCf%2BcyfO4yQhQ0bsxAAYN/PkSYVbmDnDcLCMyYVXVnTAsw/TXTQrzcfERcRBzJ8HxlMjUIOx8YgsTY86sEoxF3s3NPbnTbeN0f0BT2gX3mGNfo6hs1dJFAHrjhNtUjehhi%2BvNNMA4pbvRRPa8kRTubai74eeih5EjasYQfYNWxfSVVIcOFYLj2ENovuDxDOmcuAPWWmEXLuRSz3vHX1LkxDWvho5x4e0QFHTQiAv0IoazjdSeZEvvA9e4qve8tFWNDnXjA%3D%3D
+2025-12-20 09:40:24,610 | INFO | __main__ | Violation found
+2025-12-20 09:40:24,631 | INFO | __main__ | Found 268 NEW alerts
+2025-12-20 09:40:25,046 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:44:43,143 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:44:43,230 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp26_s6xta/creds.json
+                    
+2025-12-20 09:44:43,610 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:44:44,192 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:44:44,192 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:44:44,206 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:44:44,925 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:44:45,416 | INFO | __main__ | Report job submitted: job_id=16601257743
+2025-12-20 09:44:45,416 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 09:44:45,416 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:44:45,839 | INFO | gamservices | 16601257743 Report job status: COMPLETED
+2025-12-20 09:44:45,839 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:44:46,823 | INFO | gamservices | 16601257743 Report is ready.
+2025-12-20 09:44:46,824 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601257743-6ede959d-f16c-47cf-beb0-cac8ef0dcc22?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766242187&Signature=zFUHwYL36qWNE75cAbxIp5iVoIFuotKWejjEnXYFTbHEKP%2BM6E4bDr2YFsJ0R4oJ7xF6yBUNVL/dt8p28dnhnMsPmP3VKFzqdc3VPjYfGTK6bXSyrvu2u3lFlRjLhy43fJyJlNf1QngW7P6yd3PLoJ3Fg4ks/kr4pyyXaGM0xHrkcCitrJFdlN9ZzWAXj1wMjUZP6LUeOfdP6xDQpCGK%2BvV0GWSrDm%2BUspglIn6ctrCdWotyXuKsKUsiYTEjqmI00YrneULNxqrSrkCuRTuat0ldEWJoR9KYl1%2B1pG7aODTPoq9wAlnmeYGtKTrMVFm5W0WXUHNnrj1sZa32Sd3G6A%3D%3D
+2025-12-20 09:44:48,166 | INFO | __main__ | Violation found
+2025-12-20 09:44:48,166 | INFO | __main__ | Found 268 NEW alerts
+2025-12-20 09:44:48,737 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:44:51,094 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:44:53,486 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:44:55,903 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:44:58,359 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:00,682 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:02,981 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:05,256 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:07,582 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:10,033 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:12,494 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:14,823 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:17,206 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:19,488 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:22,017 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:24,366 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:26,818 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:29,131 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:31,730 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:34,020 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:36,333 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:45:38,628 | INFO | slack_notification | {'ok': False, 'error': 'missing_scope', 'needed': 'users:read.email', 'provided': 'incoming-webhook'}
+2025-12-20 09:59:23,955 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 09:59:24,029 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpcr80q_db/creds.json
+                    
+2025-12-20 09:59:24,439 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 09:59:25,077 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 09:59:25,077 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 09:59:25,077 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:59:25,792 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:59:26,306 | INFO | __main__ | Report job submitted: job_id=16601257743
+2025-12-20 09:59:26,306 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 09:59:26,306 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:59:26,672 | INFO | gamservices | 16601257743 Report job status: COMPLETED
+2025-12-20 09:59:26,672 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 09:59:27,698 | INFO | gamservices | 16601257743 Report is ready.
+2025-12-20 09:59:27,713 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601257743-15cce0b3-c11c-4829-b49e-97f0c2cb7fb5?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766243068&Signature=q4CJHH2No6ninynSAEGzpiy9CeEqYOQ6qzufntsUplUMz8%2BBmdc38QD%2BsNCppZpHM5m6vtii0MGHYa0TbpjTCyXQgTdI8WRPzcJmpPpDJzNqZimDVHJ0As6avSu9HusghJHI/pT3bX%2BpFE9GWdFy1FpC%2BT4dPiJM3EWNWMuUaEDEJaZtGFNnxNAY/SboxOCW75WXQt8AGpL6aaFxKjjLsQzj0D47UOCmxWx%2BAmPc1Ho5s7b8VdDvytQnOuinJFB1Uk97J%2BmWFhd5rSI6cXMF6wbPbLCZV86pE59p1tjC67nnGEDQeP/4Mu8OT71L6dXa2ywdSFzK48V03gsXqzfReA%3D%3D
+2025-12-20 09:59:28,802 | INFO | __main__ | Violation found
+2025-12-20 09:59:28,810 | INFO | __main__ | Found 3 NEW alerts
+2025-12-20 09:59:29,367 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-20 10:05:17,718 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 10:05:17,803 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpbiq94et4/creds.json
+                    
+2025-12-20 10:05:18,243 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 10:05:18,985 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 10:05:18,985 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 10:05:18,985 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:05:19,784 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:05:20,301 | INFO | __main__ | Report job submitted: job_id=16601257743
+2025-12-20 10:05:20,301 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 10:05:20,301 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:05:20,696 | INFO | gamservices | 16601257743 Report job status: COMPLETED
+2025-12-20 10:05:20,696 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:05:21,601 | INFO | gamservices | 16601257743 Report is ready.
+2025-12-20 10:05:21,601 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601257743-771ae849-cfe4-44a3-ad6d-6f822b971ddf?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766243422&Signature=XhRupxqrGP2NZhZWnYlHCtp33AajVJrL9qJH0GS0hE51aOJNuBocYqy6vTio1FEohe4n1QZQHApbdZY8hYM3D/eVfnC25sTqac79XYEh/FLf87VSRvWIfqIedKOmFAUYbyWUukN9LonFKBIJFvkpzGEEHyvim%2BwJDxVM0Hk2qaWUdrD9KlRhsg%2Br9cvMGg1HOes%2BcXaz/Jm/eOMnFRPMRSHcNzouhTVEDKYbyaZQjIv/MF0rdzUYn4yBb40c7yFhty6OwkZfYQRH4FS5thiP%2BS0p8dQTFFGb/tt4Rugo8atWPYjbsnUZQMIR4EW0/F2V9JpcXerk1jrYL8ZazMcBOA%3D%3D
+2025-12-20 10:05:22,741 | INFO | __main__ | Violation found
+2025-12-20 10:05:22,741 | INFO | __main__ | Found 3 NEW alerts
+2025-12-20 10:05:23,221 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-20 10:05:23,221 | WARNING | __main__ | Slack user not found for email priscilla.dua@vevo.com, using email in message
+2025-12-20 10:07:44,857 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 10:07:44,934 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpywwf31e8/creds.json
+                    
+2025-12-20 10:07:45,423 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 10:07:46,016 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 10:07:46,016 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 10:07:46,027 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:07:46,923 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:07:47,377 | INFO | __main__ | Report job submitted: job_id=16601257743
+2025-12-20 10:07:47,377 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 10:07:47,377 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:07:48,074 | INFO | gamservices | 16601257743 Report job status: COMPLETED
+2025-12-20 10:07:48,074 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:07:49,197 | INFO | gamservices | 16601257743 Report is ready.
+2025-12-20 10:07:49,200 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601257743-b8e8934a-42d3-480a-b22a-71b8df951598?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766243569&Signature=MNQd6nyDGiR9DDn0KlRmeKOQUE9%2BoL4Au55PBVMAoMyLNX38%2BmKx3QLs8lVaouh/P/NYrLiQzJepXWZDEoUbpfTYeTmMJUkIingrhp6Gpju2CTFzeH3Yj/k7w0TzzsBnGNrdacEjDuLl3yZtnCxCJSrZTUOfaGfybZE/uEmlumDubiHRg4K/WxjstflFFzCenGOWXTsNp8xaMJARuEf12d7oS6Ekq2lud5FRKQvfRmOqiUWxJHWrfV7hyuYlsbSPaixmRubGIibeoe41ksJ82yXjV9sMozRU%2BPOgdMBKoCMTpyg7oHGmowdxoj%2BeC1Kg0Zr2z%2BmyJGORV9QsnHC5JA%3D%3D
+2025-12-20 10:07:50,406 | INFO | __main__ | Violation found
+2025-12-20 10:07:50,414 | INFO | __main__ | Found 3 NEW alerts
+2025-12-20 10:07:50,862 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-20 10:07:50,862 | WARNING | __main__ | Slack user not found for email priscilla.dua@vevo.com, using email in message
+2025-12-20 10:12:20,610 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 10:12:20,691 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmplcjw5zir/creds.json
+                    
+2025-12-20 10:12:21,109 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 10:12:22,299 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 10:12:22,299 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 10:12:22,306 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:12:23,193 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:12:23,923 | INFO | __main__ | Report job submitted: job_id=16601367332
+2025-12-20 10:12:23,923 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 10:12:23,923 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:12:24,342 | INFO | gamservices | 16601367332 Report job status: IN_PROGRESS
+2025-12-20 10:12:54,350 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:12:55,063 | INFO | gamservices | 16601367332 Report job status: COMPLETED
+2025-12-20 10:12:55,063 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:12:56,297 | INFO | gamservices | 16601367332 Report is ready.
+2025-12-20 10:12:56,297 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601367332-9a987b2d-9d68-4f37-8e53-98dfb4c6de7d?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766243876&Signature=rs34ZyH7sTX5WHfPmYPW7xgfGmw9MWk1B8crRwkQzsRnISoq2olstdQ4ehIoBQ%2BC2iru6aD9sRCGXpVMNBZANiUOf5J7YNEBhOWQEuCH6mTPLPCU%2BelGli/93Mei8VvZgEjZUpyHBIZEQ%2BP1d1FVPZK2HoHQ0o5RR6fDGeb10zhRXznvKg%2BUaEhC5BVVZvM/YOngJLFcxYYY1dFfzY8kMBnxBTihakk9Es1BEmYO9wvuZwvkvTmqa7oteDAJ4Z9dLrP%2BA7kTjRpTK00MCzcIALnoXZVGdo0cmhoNguQHL6a1vD%2BFhIP8M2E4eFPj99p8FMk1q1pnwSBWweZUHaTUgQ%3D%3D
+2025-12-20 10:12:57,573 | INFO | __main__ | Violation found
+2025-12-20 10:12:57,588 | INFO | __main__ | Found 3 NEW alerts
+2025-12-20 10:12:58,017 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-20 10:12:58,017 | WARNING | __main__ | Slack user not found for email priscilla.dua@vevo.com, using email in message
+2025-12-20 10:13:00,023 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-20 10:13:00,706 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 10:13:00,706 | INFO | __main__ | Slack notification sent. Result: True
+2025-12-20 10:19:48,063 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-20 10:19:48,134 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp3ni3gdq_/creds.json
+                    
+2025-12-20 10:19:49,549 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-20 10:19:50,193 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-20 10:19:50,193 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-20 10:19:50,193 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:19:50,870 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:19:51,597 | INFO | __main__ | Report job submitted: job_id=16601389879
+2025-12-20 10:19:51,599 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-20 10:19:51,599 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:19:52,047 | INFO | gamservices | 16601389879 Report job status: IN_PROGRESS
+2025-12-20 10:20:22,049 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:20:22,475 | INFO | gamservices | 16601389879 Report job status: COMPLETED
+2025-12-20 10:20:22,476 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-20 10:20:23,530 | INFO | gamservices | 16601389879 Report is ready.
+2025-12-20 10:20:23,530 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16601389879-f1b08cdf-b33a-4ba7-b3a9-daf4f583be1f?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766244324&Signature=0BT5RL0qvcEwVDhZVYYf95PHFv0WqJQbgT%2B55OG/qhM6wva1VHTXqisRPS7H2IzedL2gd11cJMx5U2oup3B0SAlFFdDWZRFLDLCUkwS6obW%2B7X3qLCq%2BNo%2Bd62POftFLSVOkatK8mZvih9tsq%2BB3bmQjnCv5u4H5huuGtIwtBTX1isY90hThBsWGfGtReJ/UbexYvVgq9eBvfoZrfYMkNWivvXaQnJrecs9x2LyYSXEb29CVYhOFhbSjg/uA4CEfuytIySpe71ViYvMFjLZ3SHD43CbRXAP2wPJ86ROKRcdLzAXegqzWaJ7GyVQ38UFs3NcmC2XeJxkI4Ds8CHMpgQ%3D%3D
+2025-12-20 10:20:25,102 | INFO | __main__ | Violation found
+2025-12-20 10:20:25,129 | INFO | __main__ | Found 1 NEW alerts
+2025-12-20 10:20:25,736 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-20 10:20:25,736 | WARNING | __main__ | Slack user not found for email priscilla.dua@vevo.com, using email in message
+2025-12-20 10:20:27,742 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-20 10:20:28,300 | INFO | slack_notification | Slack alert sent successfully
+2025-12-20 10:20:28,301 | INFO | __main__ | Slack notification sent. Result: True
+2025-12-22 06:15:42,549 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-22 06:15:46,487 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpwlkh_2hc/creds.json
+                    
+2025-12-22 06:15:47,740 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-22 06:15:48,163 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-22 06:15:48,163 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-22 06:15:48,163 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:15:48,984 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:15:49,529 | INFO | __main__ | Report job submitted: job_id=16610098718
+2025-12-22 06:15:49,529 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-22 06:15:49,529 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:15:50,008 | INFO | gamservices | 16610098718 Report job status: IN_PROGRESS
+2025-12-22 06:16:20,010 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:16:20,423 | INFO | gamservices | 16610098718 Report job status: COMPLETED
+2025-12-22 06:16:20,423 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:16:21,441 | INFO | gamservices | 16610098718 Report is ready.
+2025-12-22 06:16:21,441 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16610098718-3a716416-a656-4116-baae-fdfda0b82bd4?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766402481&Signature=tqxMsvT/uF139pXmzVv5qIwFEOMDdpJwU9wDqxKe6NAssaRYCBPeu/P%2BXQyf4SxHkCeyOHwBO64eyu/pQOcMYyUn5CQy/a51dVwjbqftJ7SxPNje%2BnFdH4p/6LqB12zWn4p9Z0x9nXWp2oRGJ/sBqyHGTr5mYXwkL%2Baaz4HbIQzJhV1Z8qW3UzX%2BAPUDLIXaYZOg0z9HnXOIoO0263EZIBA2rshxoI0AK2DoEHZG8Lgs0mJcu3lmh4mGFpy4krdM%2BjeyxgJmd8FVjbFt9e9q8L1DaXq/g8NwIBcn4lwi%2BcP91BlCu%2BhpbHZucN9SkJ1k6pSzUvB%2BbBHaioIwG8vPYA%3D%3D
+2025-12-22 06:16:22,795 | INFO | __main__ | Violation found
+2025-12-22 06:16:22,818 | INFO | __main__ | Found 1 NEW alerts
+2025-12-22 06:16:23,280 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-22 06:16:23,280 | WARNING | __main__ | Slack user not found for email priscilla.dua@vevo.com, using email in message
+2025-12-22 06:16:25,286 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-22 06:16:25,749 | INFO | slack_notification | Slack alert sent successfully
+2025-12-22 06:16:25,757 | INFO | __main__ | Slack notification sent. Result: True
+2025-12-22 06:19:06,768 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-22 06:19:06,807 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpfs8i6dwi/creds.json
+                    
+2025-12-22 06:19:07,356 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-22 06:19:07,811 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-22 06:19:07,811 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-22 06:19:07,811 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:19:08,463 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:19:09,004 | INFO | __main__ | Report job submitted: job_id=16610109974
+2025-12-22 06:19:09,004 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-22 06:19:09,004 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:19:09,328 | INFO | gamservices | 16610109974 Report job status: IN_PROGRESS
+2025-12-22 06:19:39,332 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:19:39,771 | INFO | gamservices | 16610109974 Report job status: COMPLETED
+2025-12-22 06:19:39,780 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:19:45,793 | INFO | gamservices | 16610109974 Report is ready.
+2025-12-22 06:19:45,793 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16610109974-1de8bb73-dece-46ee-bbf5-4fa773f89a8b?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766402680&Signature=ldzRx%2B196/sulWlu1mVMN16NaIWiZ1sZhz4DBeO21uRr6dbda%2BU8ZM7vq6HtbVEPa6YlHLojfFuO2/F1kEFUEQWBJREC/y0it98/DHfmQh6zNkuH2wGplm%2BBU5smDvbN9q7m5xoWAkLBUT3Nhquvad1ydRblCaGu2mbDDmXW2HJSn%2BgGbDw3Iw5a8RGc0KarBX9hhk2rPxTnGgAtm4EcokI2dGAk9KFgCinjm9dDIO3I6aqryfFtMBoex3RZqs5JnW/hEvcu4za514eP7LjdXGERZNJft/HE1GRoiifk4dAwZO0fw2cbJXgtmdzBj09pdfoaas8RSHTdfzGyBvN7eA%3D%3D
+2025-12-22 06:19:47,423 | INFO | __main__ | Violation found
+2025-12-22 06:20:03,560 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-22 06:20:03,607 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmpaiyt1qzk/creds.json
+                    
+2025-12-22 06:20:04,355 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-22 06:20:04,970 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-22 06:20:04,970 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-22 06:20:04,970 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:20:06,211 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:20:06,819 | INFO | __main__ | Report job submitted: job_id=16610112258
+2025-12-22 06:20:06,819 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-22 06:20:06,819 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:20:07,233 | INFO | gamservices | 16610112258 Report job status: IN_PROGRESS
+2025-12-22 06:20:37,237 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:20:37,598 | INFO | gamservices | 16610112258 Report job status: COMPLETED
+2025-12-22 06:20:37,598 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:20:38,471 | INFO | gamservices | 16610112258 Report is ready.
+2025-12-22 06:20:38,476 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16610112258-36af4495-604c-4ede-a34e-bd67469d7364?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766402738&Signature=cLpfNAa/ZBOudjh/IBM2MGdGmSfx6b5xpNJrO8nFAZD5scGvpAZs6asnGxLwBaGzKOJ2Mb0wI7gSLImet8/tQaXDQBHqgl/JvBcxKez7OpYDwq3ldPaV1N8s8KwsDokcJrmlft0AQw9ypb9%2B9yZZMPwrOXM7k%2BMLn5aJnbSykMbZCSKMOTdXZYmJOBbqJ4uBIrBCUNIHPyHxyx/PgH3HWYh9gwxojPy5m6t3pwTM8A6QSHmDioC3iUxk3QU1rmYIJYwauDBaHUb5udNhKl0Eopyl2ENTXHC45yRnoDU4K/F6TWJqpjO9NkUpA6j2o0ogqMaLoNNpTuTDwZjbgapiVw%3D%3D
+2025-12-22 06:20:39,651 | INFO | __main__ | Violation found
+2025-12-22 06:20:39,667 | INFO | __main__ | Found 1 NEW alerts
+2025-12-22 06:20:40,164 | INFO | slack_notification | {'ok': False, 'error': 'users_not_found'}
+2025-12-22 06:20:40,164 | WARNING | __main__ | Slack user not found for email amit.nayak@mediamint.com, using email in message
+2025-12-22 06:20:42,168 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-22 06:20:42,862 | INFO | slack_notification | Slack alert sent successfully
+2025-12-22 06:20:42,867 | INFO | __main__ | Slack notification sent. Result: True
+2025-12-22 06:34:18,593 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-22 06:34:18,829 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp9sb830l5/creds.json
+                    
+2025-12-22 06:34:19,298 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-22 06:34:19,976 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-22 06:34:19,984 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-22 06:34:19,986 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:34:20,799 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:34:21,414 | INFO | __main__ | Report job submitted: job_id=16610160483
+2025-12-22 06:34:21,414 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-22 06:34:21,427 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:34:21,762 | INFO | gamservices | 16610160483 Report job status: IN_PROGRESS
+2025-12-22 06:34:51,766 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:34:52,077 | INFO | gamservices | 16610160483 Report job status: COMPLETED
+2025-12-22 06:34:52,077 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:34:52,983 | INFO | gamservices | 16610160483 Report is ready.
+2025-12-22 06:34:52,983 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16610160483-31fd3846-e3c9-4a59-860d-02aa5fd914dc?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766403592&Signature=cKlbQsMjZ5EK40guPy3vJlEOnvympW8mx901zqTfHRl3rdx3f7xk5OeO2RI1FAj68P/PwXZnkHXCpb2M1afyaxMTEjpl7xgpSUxZMAmLjOfg6IOtYqqOa7S9j78SbvCW73dP9Mly4fGzw4Nr2S6zwANQJ9QR9S53QN1TwVSCo0OgYZNIvMaMBXtVczbJ57Om9GTF2DqehIYSncpTbh1IPSxoY3SZ%2B7khEjwmBmdlAUyNboPYUCt0CpwNLcNSCyLC%2BKrCDLfx%2BWtuLO/NupxvSkYgBsm%2B%2BL7pnrV/MQxH7evnK0Ab4bsJbDkOXcBFNUjg9O/4afCMfFlg8gAdp08Ohg%3D%3D
+2025-12-22 06:34:54,193 | INFO | __main__ | Violation found
+2025-12-22 06:34:54,210 | INFO | __main__ | Found 1 NEW alerts
+2025-12-22 06:34:56,617 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-22 06:34:57,047 | INFO | slack_notification | Slack alert sent successfully
+2025-12-22 06:34:57,052 | INFO | __main__ | Slack notification sent. Result: True
+2025-12-22 06:40:38,513 | INFO | __main__ | Starting geo-check-alerts main: report_id=16521056117, imps_threshold=80
+2025-12-22 06:40:38,700 | INFO | gamservices | 
+                    ad_manager:
+                        application_name: MyGAMReportScript
+                        network_code: 40576787
+                        path_to_private_key_file: C:\Users\ADMIN\AppData\Local\Temp\tmp8z53j_on/creds.json
+                    
+2025-12-22 06:40:39,147 | INFO | googleads.soap | Request made: Service: "NetworkService" Method: "getCurrentNetwork" URL: "https://ads.google.com/apis/ads/publisher/v202508/NetworkService"
+2025-12-22 06:40:39,765 | INFO | gamservices | Current network has network code '40576787' and display name 'Vevo - DFP'.
+2025-12-22 06:40:39,765 | INFO | __main__ | GAM clint verified and ready to work....
+2025-12-22 06:40:39,781 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getSavedQueriesByStatement" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:40:40,505 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "runReportJob" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:40:41,019 | INFO | __main__ | Report job submitted: job_id=16610179939
+2025-12-22 06:40:41,020 | INFO | retry_logic | Running (1): fetch_report_url()
+2025-12-22 06:40:41,021 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:40:41,405 | INFO | gamservices | 16610179939 Report job status: IN_PROGRESS
+2025-12-22 06:41:11,415 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportJobStatus" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:41:11,836 | INFO | gamservices | 16610179939 Report job status: COMPLETED
+2025-12-22 06:41:11,836 | INFO | googleads.soap | Request made: Service: "ReportService" Method: "getReportDownloadUrlWithOptions" URL: "https://ads.google.com/apis/ads/publisher/v202508/ReportService"
+2025-12-22 06:41:13,066 | INFO | gamservices | 16610179939 Report is ready.
+2025-12-22 06:41:13,069 | INFO | gamservices | https://storage.googleapis.com/dfp-report-export/40576787-16610179939-c0c11292-cf9b-4c3b-b243-e6dfd84b7e7f?GoogleAccessId=376921769015-q0sqoemp6u2bu3hopfa7husqdb5dvi8g@developer.gserviceaccount.com&Expires=1766403972&Signature=HfWKGVzMYClWeVP7i4qa%2Bn/kPJUVZDXyddNv9/ohw7SYc8nN4ViQVorlMuslY2QvbTyFptM/%2BMSTIAtQq8nC8ffvfFuD%2B32srY9AtXaO7N0Lbmg6MmisHPqdWhxJGz0LTojjYmRcV9nZpq4%2BL7rIDe72uvONOX7WaYoqxfC7KCr8Qo7qWkpLkY7U5U7RebPLSCGUsuou1l0upO4ZS25ez2%2Bz3l6qozUeU8q/mdE1LxD6HLWutbKSBfMrUmx8is2v8xJ0I7fy0TvtgbuXiv1aofReEAymN8wgKRoaf3dCI31v8OtKTTFVsIydS%2BksH5r96GsScl8qxE/akyezmKExCg%3D%3D
+2025-12-22 06:41:14,145 | INFO | __main__ | Violation found
+2025-12-22 06:41:14,161 | INFO | __main__ | Found 1 NEW alerts
+2025-12-22 06:41:16,518 | INFO | __main__ | Sending Slack notification. Result: None, report_id=16521056117
+2025-12-22 06:41:16,957 | INFO | slack_notification | Slack alert sent successfully
+2025-12-22 06:41:16,964 | INFO | __main__ | Slack notification sent. Result: True
