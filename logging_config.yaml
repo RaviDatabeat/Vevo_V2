@@ -16,7 +16,7 @@ handlers:
     class: logging.FileHandler
     level: INFO
     formatter: standard
-    filename: vast-errors-check-alert.log
+    filename:  vedio-skip-enabled-error-check.log
     encoding: utf8
 
   # file:
