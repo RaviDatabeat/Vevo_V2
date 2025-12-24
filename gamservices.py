@@ -1,364 +1,295 @@
-from datetime import date ,datetime
-import traceback
-import pytz
-import logging
+"""Utilities to run and fetch Google Ad Manager (GAM) saved reports.
+
+Provides a thin client wrapper around the Google Ad Manager `ReportService`
+used to run saved queries, poll for completion, and retrieve a download URL.
+
+Usage example:
+    from googleads import ad_manager
+    from gam_report_pull import GAMReportClient
+    client = ad_manager.AdManagerClient.LoadFromStorage('path/to/googleads.yaml')
+    gam = GAMReportClient(client)
+    saved = gam.get_saved_query(12345)
+    job = gam.run_report(saved)
+    url = gam.fetch_report_url(job['id'])
+
+Notes:
+- `fetch_report_url` is decorated with `retry` from `retry_logic` to retry on failures.
+- The caller is responsible for downloading the CSV from the returned URL.
+"""
+
 import json
-import pandas as pd
-import awswrangler as wr 
+import locale
+import logging
+import tempfile
 import time
-from dotenv import load_dotenv
-import os
-import pprint
-load_dotenv() 
-from gamservices import GAMReportClient
-from utils import setup_logging,get_env
-from slack_msg_build import outer_user_block, outer_user_text_block, inner_info_block
-from slack_notification import slack_notification, SlackAPI
+from typing import Any
 
-logger= logging.getLogger(__name__)
+from googleads import ad_manager
+import pandas as pd
 
-def main():
-    application_name =get_env("APPLICATION_NAME")
-    network_code = get_env("NETWORK_CODE")
-    service_account_json= get_env("SERVICE_ACCOUNT_JSON")
-    google_ads_report_id = int(get_env("GOOGLE_ADS_REPORT_ID"))
-    slack_bot_token = get_env("SLACK_BOT_TOKEN")
-    imps_threshold = int(get_env("IMPS_THRESHOLD"))
+from retry_logic import retry
 
-    slack_webhook = get_env("SLACK_WEBHOOK")
+logger = logging.getLogger(__name__)
 
-    slack_api = SlackAPI(slack_bot_token)
-    aws_skip_check_bucket = get_env("AWS_SKIP_CHECK_BUCKET")
+locale.getdefaultlocale = lambda *args: ["en_US", "UTF-8"]
 
 
+class GAMReportClient:
+    """Client for running GAM saved report queries and retrieving results.
 
+    Args:
+        ad_manager_client: An authenticated `googleads.ad_manager.AdManagerClient`.
+        version: API version string (default "v202508").
+    """
 
+    def __init__(
+        self, ad_manager_client: ad_manager.AdManagerClient, version: str = "v202508"
+    ) -> None:
+        self.version = version
+        self.ad_manager_client = ad_manager_client
 
-    logger.info(
-        "Starting skip_not_enabled-check main: report_id=%s, imps_threshold=%d",
-        google_ads_report_id,
-        imps_threshold,
-    )
-    # Use a timezone-aware 'today' to ensure consistent filenames and ingestion timestamps
-    today_date = datetime.now(pytz.timezone("America/New_York"))
-    today_date_str = today_date.date().strftime("%Y-%m-%d")
-
-    s3_dataset_path = (
-    aws_skip_check_bucket.rstrip("/")
-    + f"/skip_not_enabled/date={today_date_str}.csv"
-)
-    logger.debug("S3 state file path resolved: %s", s3_dataset_path)
- 
-
-    #Parse service account json into dict for clinet  library usage .Keep the raw json out of logs
-    with open(service_account_json, "r") as f:
-        Service_account_dict = json.load(f)
-
-    #Start GAM client using the provide service account object to avoid writing credetials to disk
-    logger.debug("Intializing GAMREPORTclient ")
-    client = GAMReportClient.from_service_account_obj(
-        application_name= application_name,
-        network_code= network_code,
-        service_account_dict= Service_account_dict,
-    )
-
-    #Verify client credetials 
-    client.check_client_service()
-    logger.info("GAM clint verified and ready to work....")
- 
-    #Fetch the saved report defintion from gam.External api call
-    logger.debug("Fetching the report from the gam api")
-    report = client.get_saved_query(google_ads_report_id)
-
-    #Force the report to use todays data so the job return only recent rows
-
-
-    print(f"reportQuery value: {report.reportQuery}")
-    # report.reportQuery["dateRangeType"] ="TODAY"
-    
-    #Launch the report job  record the regturned job id for tracking
-    logger.debug("Submitting report job to GAM API")
-
-    report_job = client.run_report(report)
-    report_job_id = report_job["id"]
-    logger.info("Report job submitted: job_id=%s", report_job_id)
-
-    # Wait for report completion and read into a DataFrame. This may block on GAM API.
-    delivery_df = client.fetch_report_df(report_job_id)
-    violations = []
-
-
-    #Core logic 
-    delivery_df["video_viewership_video_length"] = pd.to_numeric(
-    delivery_df["video_viewership_video_length"].replace("-", 0),
-    errors="coerce"
-    )
-
-    delivery_df["video_viewership_skip_button_shown"] = pd.to_numeric(
-        delivery_df["video_viewership_skip_button_shown"].replace("-", 0),
-        errors="coerce"
-    )
-
-    delivery_df["programmatic_deal_id"] = pd.to_numeric(
-        delivery_df["programmatic_deal_id"],
-        errors="coerce"
-    )         
-    delivery_df.to_csv("test.csv", index=False)
-    rule_violation = delivery_df[  # Use df directly (already filtered)
-        (delivery_df["video_viewership_video_length"] >= 30) &
-        (delivery_df["video_viewership_skip_button_shown"] == 0) & 
-        (delivery_df["creative_size"] == "480 x 361v" ) & 
-        (delivery_df["programmatic_deal_id"] == 0)
-            ]
-    #To check weater creative size is unique 
-    print(delivery_df["creative_size"].unique())
-
-    if not rule_violation.empty:
-        rule_violation = rule_violation.copy()
-        logger.info("Violation found")
-        violations.append(rule_violation)
-        
-    if violations:
-        final_df = pd.concat(violations, ignore_index=True)
-        # print(final_df)
-        final_df.to_csv("rule_violations.csv", index=False)
-
-     # Track which line items we've previously alerted on to avoid duplicate notifications
-    # This lets the job avoid duplicate Slack notifications across runs on the same day.
-    # Use S3 as a simple state store
-    # sent_keys_df = pd.DataFrame(columns=['line_item_id', 'creative_name'])
-    sent_keys_list = []
-
-
-    try:
-        sent_keys_df = wr.s3.read_csv(s3_dataset_path)
-
-
-        if sent_keys_df.empty:
-            logger.info("S3 dataset exists but no records for date=%s", today_date_str)
-            sent_keys_list = []
-        elif "creative_name" in sent_keys_df.columns:
-            sent_keys_list = list(set(
-                zip(
-                    sent_keys_df["line_item_id"].astype(str),
-                    sent_keys_df["creative_name"].astype(str)
-                )
-            ))
-            logger.info("Loaded %d previously alerted keys (creative_name)", len(sent_keys_list))
-
-        elif "creative_size" in sent_keys_df.columns:
-            sent_keys_list = list(set(
-                zip(
-                    sent_keys_df["line_item_id"].astype(str),
-                    sent_keys_df["creative_size"].astype(str)
-                )
-            ))
-            logger.info("Loaded %d previously alerted keys (creative_size)", len(sent_keys_list))
-
-    except Exception as e:
-        logger.info(
-            "No existing S3 dataset/partition found for date=%s (%s)",
-            today_date_str,
-            str(e)
+        # Initialize appropriate service.
+        self.report_service = self.ad_manager_client.GetService(
+            "ReportService", version=self.version
         )
-        sent_keys_df = pd.DataFrame(
-            columns=["line_item_id", "creative_name", "creative_size"]
+
+    @classmethod
+    def from_yaml_file(cls, yaml_file_path: str, version: str = "v202508"):
+        """Create a `GAMReportClient` using a googleads YAML credentials file.
+
+        Args:
+            yaml_file_path: Path to the YAML file used by the `googleads` library.
+            version: API version string to use for services.
+
+        Returns:
+            An initialized `GAMReportClient` instance.
+        """
+        ad_manager_client = ad_manager.AdManagerClient.LoadFromStorage(yaml_file_path)
+
+        return cls(ad_manager_client, version)
+
+    @classmethod
+    def from_service_account_file(
+        cls,
+        application_name: str,
+        network_code: str,
+        service_account_path: str,
+        version: str = "v202508",
+    ):
+        """Create a `GAMReportClient` using service account credentials.
+
+        This helper builds a small YAML string suitable for `googleads`'s
+        `LoadFromString` when using a service account private key file.
+
+        Args:
+                application_name: The application name to include in the config.
+                network_code: The network code to target.
+                service_account_path: Path to the private key file for the service account.
+                version: API version string to use for services.
+
+        Returns:
+                An initialized `GAMReportClient` instance.
+        """
+        yaml_string = f"""
+                ad_manager:
+                    application_name: {application_name}
+                    network_code: {network_code}
+                    path_to_private_key_file: {service_account_path}
+                """
+        logger.info(yaml_string)
+        ad_manager_client = ad_manager.AdManagerClient.LoadFromString(yaml_string)
+
+        return cls(ad_manager_client, version)
+
+    @classmethod
+    def from_service_account_obj(
+        cls,
+        application_name: str,
+        network_code: str,
+        service_account_dict: dict,
+        version: str = "v202508",
+    ):
+        """Create a `GAMReportClient` using service account credentials.
+
+        This helper builds a small YAML string suitable for `googleads`'s
+        `LoadFromString` when using a service account private key file.
+
+        Args:
+                application_name: The application name to include in the config.
+                network_code: The network code to target.
+                service_account_dict: Dict for the service account.
+                version: API version string to use for services.
+
+        Returns:
+                An initialized `GAMReportClient` instance.
+        """
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cred_path = f"{temp_dir}/creds.json"
+            with open(cred_path, "w") as f:
+                json.dump(service_account_dict, f)
+
+            yaml_string = f"""
+                    ad_manager:
+                        application_name: {application_name}
+                        network_code: {network_code}
+                        path_to_private_key_file: {cred_path}
+                    """
+            logger.info(yaml_string)
+            ad_manager_client = ad_manager.AdManagerClient.LoadFromString(yaml_string)
+
+        return cls(ad_manager_client, version)
+
+    def check_all_networks(self):
+        """Print basic information about the current authenticated network.
+
+        Uses the `NetworkService` to obtain the current network's metadata and
+        prints the network code and display name. This is primarily a helper
+        for manual verification of credentials and the targeted network.
+        """
+        network_service = self.ad_manager_client.GetService(
+            "NetworkService", version=self.version
         )
-        sent_keys_list = []
+        networks = network_service.getAllNetworks()
+        # client_RON = current_network['effectiveRootAdUnitId']
 
+        for current_network in networks:
+            logger.info(
+                "Current network has network code '%s' and display name '%s'."
+                % (current_network["networkCode"], current_network["displayName"])
+            )
 
+    def check_client_service(self):
+        """Print basic information about the current authenticated network.
 
-    # Process violations if any were found
-    
-    if violations:
-        final_df = pd.concat(violations, ignore_index=True)
-        
-        # Create key tuple for each violation
-        final_df["key_tuple"] = list(zip(
-            final_df["line_item_id"].astype(str),
-            final_df["creative_name"].astype(str)
-        ))
-        
-        # Check if this (line_item_id, creative_name) was already alerted
-        final_df["previous_alert_status"] = final_df["key_tuple"].isin(sent_keys_list)
-        
-        # Create DataFrame with both columns for S3
-        all_violation_keys = pd.DataFrame({
-            'line_item_id': final_df['line_item_id'].astype(str),
-            'creative_name': final_df['creative_name'].astype(str)
-        })
-
-        #To define for testing in place of using in aws s3 bucket function
-    
-
-        # Combine with previous keys and save
-        new_state_df = pd.concat([sent_keys_df, all_violation_keys])
-        new_state_df["date"] = today_date_str
-        
-        # new_state_df.to_csv(statepath, index=False)
-        # Merge previous + new keys and de-duplicate
-        merged_state_df = (
-        pd.concat([sent_keys_df, all_violation_keys], ignore_index=True)
-    )
-        wr.s3.to_csv(
-            df=merged_state_df,
-            path=s3_dataset_path,
-            index=False
+        Uses the `NetworkService` to obtain the current network's metadata and
+        prints the network code and display name. This is primarily a helper
+        for manual verification of credentials and the targeted network.
+        """
+        network_service = self.ad_manager_client.GetService(
+            "NetworkService", version=self.version
         )
+        current_network = network_service.getCurrentNetwork()
+        # client_RON = current_network['effectiveRootAdUnitId']
 
         logger.info(
-            "Updated S3 state for date=%s with %d total keys",
-            today_date_str,
-            len(merged_state_df)
+            "Current network has network code '%s' and display name '%s'."
+            % (current_network["networkCode"], current_network["displayName"])
         )
-        
-        # Filter for NEW alerts
-        new_alerts_df = final_df[~final_df["previous_alert_status"]].copy(deep=True)
-        
-        if new_alerts_df.empty:
-            logger.info("No NEW alerts (all were previously alerted)")
-            return
-    # Build Slack blocks for only the alerts that haven't been sent previously.
-    # Group alerts by `order_trafficker` to direct messages to the right users.
-        elements = []
-        print(new_alerts_df.columns.tolist())
-        li_group_df = new_alerts_df.groupby(["order_trafficker"])
 
-        for i, grouped_df in li_group_df:
-            # `i` is the group key (order_trafficker). Extract the email address from the stored string.
-            user_email_raw: str = i[0]
-            # The saved format is expected to include the email in parentheses (e.g., "Name (email)").
-            # We defensively parse this and fall back to the raw string if format differs.
-            try:
-                user_email = user_email_raw.split("(")[1].split(")")[0]
-            except Exception:
-                user_email = user_email_raw
-                logger.debug(
-                    "Unexpected order_trafficker format; using raw value: %s",
-                    user_email_raw,
-                )
+    def get_all_saved_reports(self):
+        """Return all saved report queries for the authenticated network.
 
-            # Lookup Slack user
-            user_id = slack_api.lookup_by_email(user_email)
+        Returns:
+            The raw API response from `getSavedQueriesByStatement`, typically a
+            dictionary that may contain a `results` list of saved query objects.
+        """
+        # Create statement object to filter for an order.
+        statement = ad_manager.StatementBuilder(version=self.version)
 
-            if user_id:
-                # Slack user exists → tag
-                elements.append(outer_user_block(user_id))
-            else:
-                # Slack user not found → show email
-                logger.warning(
-                    "Slack user not found for email %s, using email in message", user_email
-                )
-                elements.append(outer_user_text_block(user_email))
-
-            # Add grouped alert details
-            elements.append(inner_info_block(grouped_df))
-            elements.append({"type": "rich_text_section", "elements": [{"type": "text", "text": "\n"}]})
-
-            # Rate-limit lookups/requests to avoid hitting Slack API rate limits.
-            time.sleep(2)
-        blocks = [
-            {
-                "type": "header",
-                "text": {
-                    "type": "plain_text",
-                    "text": " Creative size Skip not enabled alert ",
-                },
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "plain_text",
-                    "text": r"The following line items require immediate attention due to a skip not enabled for creative  vedio duration >= 30 sec:",
-                },
-            },
-            {"type": "divider"},
-            {"type": "rich_text", "elements": elements},
-        ]
-
-        json_msg = {"blocks": blocks}
-
-        # Send Slack notification and log the outcome. Avoid logging the webhook URL itself.
-        logger.info(
-            "Sending Slack notification. Result: %s, report_id=%s",
-            str(send_result),
-            google_ads_report_id,
+        response = self.report_service.getSavedQueriesByStatement(
+            statement.ToStatement()
         )
-        # Send Slack notification via incoming webhook. We intentionally avoid logging the webhook URL.
- 
 
-        if violations :
-            # Real violation alert
-            json_msg = {"blocks": blocks}
+        return response
+
+    def get_saved_query(self, saved_query_id: int):
+        """Fetch a single saved query by its numeric ID.
+
+        Args:
+            saved_query_id: The numeric ID of the saved report query.
+
+        Returns:
+            A dictionary representing the saved query.
+
+        Raises:
+            KeyError or IndexError: If the API response contains no `results`.
+        """
+        # Create statement object to filter for an order.
+        statement = (
+            ad_manager.StatementBuilder(version=self.version)
+            .Where("id = :id")
+            .WithBindVariable("id", int(saved_query_id))
+            .Limit(1)
+        )
+
+        response = self.report_service.getSavedQueriesByStatement(
+            statement.ToStatement()
+        )
+
+        return response["results"][0]
+
+    def run_report(self, saved_query: Any):
+        """Start a report job using a saved query definition.
+
+        Args:
+            saved_query: A saved query object (as returned by `get_saved_query`).
+
+        Returns:
+            The report job object returned by `runReportJob` (contains job id).
+        """
+        report_job = {}
+
+        report_job["reportQuery"] = saved_query["reportQuery"]
+
+        report_job_response = self.report_service.runReportJob(report_job)
+
+        return report_job_response
+
+    @retry(retries=3, delay=5)
+    def fetch_report_url(self, report_job_id: int, wait_for: int = 30):
+        """Poll a report job until completion and return a download URL.
+
+        This method periodically polls `getReportJobStatus` until the job
+        is no longer `IN_PROGRESS`. When the job reaches `COMPLETED`, it
+        requests a download URL with CSV export options and returns it.
+
+        The function is decorated with `retry` to allow transient failures to
+        be retried according to the configured retries/delay.
+
+        Args:
+            report_job_id: The numeric report job id returned by `runReportJob`.
+
+        Returns:
+            A string URL for downloading the CSV when the job completes, or
+            `None` if the job fails.
+        """
+        # Poll the status of the report job until it is completed
+        status = "IN_PROGRESS"
+        while status == "IN_PROGRESS":
+            report_job_status = self.report_service.getReportJobStatus(report_job_id)
+            logger.info(f"{report_job_id} Report job status: {report_job_status}")
+            status = report_job_status
+            if status == "IN_PROGRESS":
+                time.sleep(wait_for)  # Wait 30 seconds before checking again
+
+        # Download the report if it is completed
+        if status == "COMPLETED":
+            download_url = self.report_service.getReportDownloadUrlWithOptions(
+                report_job_id, {"exportFormat": "CSV_DUMP"}
+            )
+            logger.info(f"{report_job_id} Report is ready.")
+            return download_url
         else:
-            # No violations OR no new violations
-            json_msg = {
-                "blocks": [
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": "No skip enable alertSize violations today."
-                        }
-                    }
-                ]
-            }
+            logger.info(f"{report_job_id} Report job failed.")
 
-
-    slack_webhook = get_env("SLACK_WEBHOOK")
-
-    try:
-        send_result = slack_notification(slack_webhook, json_msg)
-        logger.info("Slack notification sent successfully")
-    except Exception as e:
-        logger.exception("Failed to send Slack notification")
-
-if __name__ == "__main__":
-    import os
-    import awswrangler as wr
-    from slack_notification import simple_slack_notification
-
-
-    status_slack_webhook = get_env("STATUS_SLACK_WEBHOOK")
-
-    simple_slack_notification(
-        status_slack_webhook,
-        "Skip_enabled-errors-alert Started!",
-    )
-
-    try:
-        setup_logging()
-
-        main()
-    except Exception as e:
-        logging.error(f"Uncaught exception: {e}")
-        logging.error(traceback.format_exc())
-        simple_slack_notification(
-            status_slack_webhook,
-            f"🚨🚨 Skip_enabled Miss-check-alert failed! 🚨🚨\nUncaught exception: {e}",
+    def fetch_report_df(self, report_job_id: int):
+        report_download_url = self.fetch_report_url(report_job_id)
+        logger.info(report_download_url)
+        delivery_df = pd.read_csv(
+            report_download_url,  # type: ignore
+            compression="gzip",
+            low_memory=False,
         )
-    finally:
-        try:
-            import os
-        
 
-            bucket = os.getenv("AWS_LOG_BUCKET")
-            now = datetime.now()
-            log_key = (
-                f"s3://{bucket}/logs/"
-                f"vedio-enabled-error-check-{now.strftime('%Y-%m-%d_%H-%M-%S')}.log"
-            )
+        renamed_dict = {
+            i: i.replace(" ", "_")
+            .replace("[", "_")
+            .replace("]", "_")
+            .lower()
+            .split(".")[-1]
+            for i in delivery_df.columns
+        }
+        delivery_df.rename(columns=renamed_dict, inplace=True)
 
-            local_log_file = "vedio-skip-enabled-error-check.log"
-            wr.s3.upload(local_log_file, log_key)
-            print(f"✅ Log uploaded to {log_key}")
-            print(f"✅ Log uploaded to {log_key}")
-            simple_slack_notification(
-                status_slack_webhook,
-                f"Skip-not-enabled-alert completed!\n✅ Log uploaded to {log_key}",
-            )
-        except Exception as upload_err:
-            # if upload fails, at least print to stdout
-            simple_slack_notification(
-                status_slack_webhook, f"⚠️ Failed to upload log to S3: {upload_err}"
-            )
+        return delivery_df
