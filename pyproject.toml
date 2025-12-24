@@ -4,4 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "awswrangler>=3.14.0",
+    "boto3>=1.42.15",
+    "datetime>=6.0",
+    "dotenv>=0.9.9",
+    "logging>=0.4.9.6",
+    "pandas>=2.3.3",
+    "pytz>=2025.2",
+    "typing>=3.10.0.0",
+]
