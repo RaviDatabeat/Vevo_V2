@@ -23,7 +23,6 @@ def main():
     service_account_json= get_env("SERVICE_ACCOUNT_JSON")
     google_ads_report_id = int(get_env("GOOGLE_ADS_REPORT_ID"))
     slack_bot_token = get_env("SLACK_BOT_TOKEN")
-    imps_threshold = int(get_env("IMPS_THRESHOLD"))
 
     slack_webhook = get_env("SLACK_WEBHOOK")
 
@@ -35,9 +34,8 @@ def main():
 
 
     logger.info(
-        "Starting skip_not_enabled-check main: report_id=%s, imps_threshold=%d",
+        "Starting skip_not_enabled-check main: report_id=%s",
         google_ads_report_id,
-        imps_threshold,
     )
     # Use a timezone-aware 'today' to ensure consistent filenames and ingestion timestamps
     today_date = datetime.now(pytz.timezone("America/New_York"))
@@ -74,7 +72,6 @@ def main():
 
 
     print(f"reportQuery value: {report.reportQuery}")
-    # report.reportQuery["dateRangeType"] ="TODAY"
     
     #Launch the report job  record the regturned job id for tracking
     logger.debug("Submitting report job to GAM API")
@@ -85,7 +82,7 @@ def main():
 
     # Wait for report completion and read into a DataFrame. This may block on GAM API.
     delivery_df = client.fetch_report_df(report_job_id)
-    violations = []
+
 
 
     #Core logic 
@@ -103,7 +100,6 @@ def main():
         delivery_df["programmatic_deal_id"],
         errors="coerce"
     )         
-    delivery_df.to_csv("test.csv", index=False)
     rule_violation = delivery_df[  # Use df directly (already filtered)
         (delivery_df["video_viewership_video_length"] >= 30) &
         (delivery_df["video_viewership_skip_button_shown"] == 0) & 
@@ -112,17 +108,14 @@ def main():
             ]
     #To check weater creative size is unique 
     print(delivery_df["creative_size"].unique())
+    if rule_violation.empty:
+        logger.info("No violations found")
+        return
 
-    if not rule_violation.empty:
-        rule_violation = rule_violation.copy()
-        logger.info("Violation found")
-        violations.append(rule_violation)
+    final_df = rule_violation.copy()
+    logger.info("Violation found")
+
         
-    if violations:
-        final_df = pd.concat(violations, ignore_index=True)
-        # print(final_df)
-        final_df.to_csv("rule_violations.csv", index=False)
-
      # Track which line items we've previously alerted on to avoid duplicate notifications
     # This lets the job avoid duplicate Slack notifications across runs on the same day.
     # Use S3 as a simple state store
@@ -132,8 +125,6 @@ def main():
 
     try:
         sent_keys_df = wr.s3.read_csv(s3_dataset_path)
-
-
         if sent_keys_df.empty:
             logger.info("S3 dataset exists but no records for date=%s", today_date_str)
             sent_keys_list = []
@@ -164,14 +155,7 @@ def main():
         sent_keys_df = pd.DataFrame(
             columns=["line_item_id", "creative_name", "creative_size"]
         )
-        sent_keys_list = []
-
-
-
-    # Process violations if any were found
-    
-    if violations:
-        final_df = pd.concat(violations, ignore_index=True)
+        sent_keys_list = [] 
         
         # Create key tuple for each violation
         final_df["key_tuple"] = list(zip(
@@ -192,10 +176,7 @@ def main():
     
 
         # Combine with previous keys and save
-        new_state_df = pd.concat([sent_keys_df, all_violation_keys])
-        new_state_df["date"] = today_date_str
         
-        # new_state_df.to_csv(statepath, index=False)
         # Merge previous + new keys and de-duplicate
         merged_state_df = (
         pd.concat([sent_keys_df, all_violation_keys], ignore_index=True)
@@ -222,9 +203,9 @@ def main():
     # Group alerts by `order_trafficker` to direct messages to the right users.
         elements = []
         print(new_alerts_df.columns.tolist())
-        li_group_df = new_alerts_df.groupby(["order_trafficker"])
+        order_group_df = new_alerts_df.groupby(["order_trafficker"])
 
-        for i, grouped_df in li_group_df:
+        for i, grouped_df in order_group_df:
             # `i` is the group key (order_trafficker). Extract the email address from the stored string.
             user_email_raw: str = i[0]
             # The saved format is expected to include the email in parentheses (e.g., "Name (email)").
@@ -269,7 +250,7 @@ def main():
                 "type": "section",
                 "text": {
                     "type": "plain_text",
-                    "text": r"The following line items require immediate attention due to a skip not enabled for creative  vedio duration >= 30 sec:",
+                    "text": r"The following line items require immediate attention due to a skip not enabled for creative  video duration >= 30 sec:",
                 },
             },
             {"type": "divider"},
@@ -281,13 +262,12 @@ def main():
         # Send Slack notification and log the outcome. Avoid logging the webhook URL itself.
         logger.info(
             "Sending Slack notification. Result: %s, report_id=%s",
-            str(send_result),
             google_ads_report_id,
         )
         # Send Slack notification via incoming webhook. We intentionally avoid logging the webhook URL.
  
 
-        if violations :
+        if not final_df.empty:
             # Real violation alert
             json_msg = {"blocks": blocks}
         else:
@@ -304,8 +284,6 @@ def main():
                 ]
             }
 
-
-    slack_webhook = get_env("SLACK_WEBHOOK")
 
     try:
         send_result = slack_notification(slack_webhook, json_msg)
@@ -346,10 +324,10 @@ if __name__ == "__main__":
             now = datetime.now()
             log_key = (
                 f"s3://{bucket}/logs/"
-                f"vedio-enabled-error-check-{now.strftime('%Y-%m-%d_%H-%M-%S')}.log"
+                f"video-enabled-error-check-{now.strftime('%Y-%m-%d_%H-%M-%S')}.log"
             )
 
-            local_log_file = "vedio-skip-enabled-error-check.log"
+            local_log_file = "video-skip-enabled-error-check.log"
             wr.s3.upload(local_log_file, log_key)
             print(f"✅ Log uploaded to {log_key}")
             print(f"✅ Log uploaded to {log_key}")
