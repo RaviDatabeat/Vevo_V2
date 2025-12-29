@@ -234,7 +234,7 @@ def main():
 
             # Add grouped alert details
             elements.append(inner_info_block(grouped_df))
-            elements.append({"type": "rich_text_section", "elements": [{"type": "text", "text": "\n"}]})
+            #elements.append({"type": "rich_text_section", "elements": [{"type": "text", "text": "\n"}]})
 
             # Rate-limit lookups/requests to avoid hitting Slack API rate limits.
             time.sleep(2)
