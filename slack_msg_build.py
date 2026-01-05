@@ -63,7 +63,7 @@ def inner_info_block(grouped_df: pd.DataFrame):
                     },
                     {
                         "type": "text",
-                        "text": f" : Creative Size = {j.creative_size}",
+                        "text": f" : Video Size = {round(j.video_viewership_video_length, 0)}",
                     },
 
                 ],
