@@ -249,15 +249,14 @@ def main():
  
 
     #Parse service account json into dict for clinet  library usage .Keep the raw json out of logs
-    with open(service_account_json, "r") as f:
-        Service_account_dict = json.load(f)
+    service_account_dict = json.loads(service_account_json)
 
     #Start GAM client using the provide service account object to avoid writing credetials to disk
     logger.debug("Intializing GAMREPORTclient ")
     client = GAMReportClient.from_service_account_obj(
         application_name= application_name,
         network_code= network_code,
-        service_account_dict= Service_account_dict,
+        service_account_dict= service_account_dict,
     )
 
     #Verify client credetials 
