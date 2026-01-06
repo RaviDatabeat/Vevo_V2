@@ -2,18 +2,26 @@ import logging.config
 import os
 import yaml
 from dotenv import load_dotenv
-import os
+from pathlib import Path
 
-# Load variables from .env into os.environ
 load_dotenv() 
 
-
 def setup_logging():
-    # Ensure the `logs` directory exists before configuring file handlers
-
-    # Load configuration safely and apply it
-    with open("logging_config.yaml", "r") as f:
+    # Get the directory where this script is located
+    script_dir = Path(__file__).parent
+        # Load configuration safely and apply it
+    config_path = script_dir / "logging_config.yaml"
+    with open(config_path, "r") as f:
         config = yaml.safe_load(f)
+
+    # Update log file paths to be relative to script directory
+    # This ensures logs are created in a predictable location regardless of working directory
+    if "handlers" in config:
+        for handler_name, handler_config in config["handlers"].items():
+            if "filename" in handler_config:
+                # Convert relative log file path to absolute path relative to script directory
+                log_filename = handler_config["filename"]
+                handler_config["filename"] = str(script_dir / log_filename)
 
     logging.config.dictConfig(config)
 
