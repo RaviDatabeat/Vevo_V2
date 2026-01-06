@@ -16,7 +16,7 @@ handlers:
     class: logging.FileHandler
     level: INFO
     formatter: standard
-    filename:  vedio-skip-enabled-error-check.log
+    filename:  skip-check-enable-alert.log
     encoding: utf8
 
   # file:
