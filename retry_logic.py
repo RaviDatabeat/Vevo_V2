@@ -17,7 +17,7 @@ def retry(retries: int = 3, delay: float = 1) -> Callable:
 
     # Don't let the user use this decorator if they are high
     if retries < 1 or delay <= 0:
-        raise ValueError("Are you high, mate?")
+        raise ValueError("Invalid retry configuration: retries must be >= 1 and delay must be > 0")
 
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
