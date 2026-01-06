@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils import name_shortner
+from utils import name_shortner, get_env
 
 
 def outer_user_block(user_id: str):
@@ -50,6 +50,7 @@ def inner_info_block(grouped_df: pd.DataFrame):
     grouped_df.sort_values(
         "line_item_id", inplace=True, ascending=False
     )
+    network_code = get_env("NETWORK_CODE")
     for j in grouped_df.itertuples():
         elements.append(
             {
@@ -57,13 +58,13 @@ def inner_info_block(grouped_df: pd.DataFrame):
                 "elements": [
                     {
                         "type": "link",
-                        "url": f"https://admanager.google.com/40576787#delivery/line_item/detail/line_item_id={j.line_item_id}&li_tab=settings",
+                        "url": f"https://admanager.google.com/{network_code}#delivery/line_item/detail/line_item_id={j.line_item_id}&li_tab=settings",
                         "text": name_shortner(f"{j.line_item_name} | {j.creative_size}"),
  # type: ignore
                     },
                     {
                         "type": "text",
-                        "text": f" : Video Size = {round(j.video_viewership_video_length, 0)}",
+                        "text": f" : Creative Size = {j.creative_size}",
                     },
 
                 ],
